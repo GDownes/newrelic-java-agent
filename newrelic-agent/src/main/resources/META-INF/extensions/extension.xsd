@@ -81,7 +81,8 @@
                                                         </xs:annotation>
                                                     </xs:element>
                                                 </xs:choice>
-                                                <xs:element name="method" minOccurs="1" maxOccurs="unbounded">
+                                                <xs:choice minOccurs="1">
+                                                    <xs:element name="method" maxOccurs="unbounded">
                                                     <xs:complexType>
 														<xs:choice minOccurs="1">
 			                                                <xs:element name="returnType" type="xs:string" minOccurs="0">
@@ -136,6 +137,9 @@
                                                         
                                                     </xs:complexType>
                                                 </xs:element>
+                                                    <xs:element maxOccurs="1" name="traceLambda" type="xs:boolean" default="false"/>
+                                                    <xs:element maxOccurs="unbounded" name="traceByReturnType"/>
+                                                </xs:choice>
                                             </xs:sequence>
                                         </xs:choice>
                                     </xs:sequence>
