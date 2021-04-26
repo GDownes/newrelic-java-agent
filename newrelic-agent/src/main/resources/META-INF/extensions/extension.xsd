@@ -137,7 +137,16 @@
                                                         
                                                     </xs:complexType>
                                                 </xs:element>
-                                                    <xs:element maxOccurs="1" name="traceLambda" type="xs:boolean" default="false"/>
+                                                    <xs:element name="traceLambda">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:boolean">
+                                                                    <xs:attribute type="xs:string" name="pattern"/>
+                                                                    <xs:attribute type="xs:boolean" name="includeNonstatic"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
                                                     <xs:element maxOccurs="unbounded" name="traceByReturnType"/>
                                                 </xs:choice>
                                             </xs:sequence>
