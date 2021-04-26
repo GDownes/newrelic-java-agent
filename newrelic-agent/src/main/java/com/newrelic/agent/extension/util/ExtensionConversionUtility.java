@@ -286,7 +286,7 @@ public final class ExtensionConversionUtility {
         } else if (cut.getMethodAnnotation() != null) {
             return new AnnotationMethodMatcher(Type.getObjectType(cut.getMethodAnnotation().replace('.', '/')));
         } else if (cut.isTraceLambda()) {
-            return new LambdaMethodMatcher();
+            return new LambdaMethodMatcher(cut.getPattern(), cut.getIncludeNonstatic());
         } else if (traceReturnTypeDescriptors != null && !traceReturnTypeDescriptors.isEmpty()) {
             return new ReturnTypeMethodMatcher(traceReturnTypeDescriptors);
         } else {

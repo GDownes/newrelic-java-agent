@@ -455,6 +455,8 @@ public class Extension {
             protected boolean leaf;
             protected boolean ignoreTransaction;
             protected boolean traceLambda;
+            protected String pattern;
+            protected boolean includeNonstatic;
             protected List<String> traceReturnTypeDescriptors;
             protected String transactionType;
 
@@ -686,6 +688,42 @@ public class Extension {
                     traceReturnTypeDescriptors = new ArrayList<>();
                 }
                 return traceReturnTypeDescriptors;
+            }
+
+            /**
+             * Gets the value of the pattern property.
+             *
+             * @return possible object is {@link String }
+             */
+            public String getPattern() {
+                return pattern;
+            }
+
+            /**
+             * Sets the value of the pattern property.
+             *
+             * @param value allowed object is {@link String }
+             */
+            public void setPattern(String value) {
+                pattern = value;
+            }
+
+            /**
+             * Gets the value of the includeNonstatic property.
+             *
+             * @return possible object is {@link Boolean }
+             */
+            public Boolean getIncludeNonstatic() {
+                return includeNonstatic;
+            }
+
+            /**
+             * Sets the value of the includeNonstatic property.
+             *
+             * @param value allowed object is {@link Boolean }
+             */
+            public void setIncludeNonstatic(Boolean value) {
+                includeNonstatic = value;
             }
 
             /**

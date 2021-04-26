@@ -7,6 +7,7 @@
 
 package com.newrelic.agent.instrumentation.methodmatchers;
 
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.Method;
 
 import java.util.Set;
@@ -17,11 +18,18 @@ import java.util.regex.Pattern;
  */
 public final class LambdaMethodMatcher implements MethodMatcher {
 
-    static final Pattern LAMBDA_METHOD_NAME_PATTERN = Pattern.compile("^\\$?(lambda|anonfun)\\$(?<name>.*)");
+    private final Pattern lambdaMethodPattern;
+    private final Boolean includeNonstatic;
+
+    public LambdaMethodMatcher(String pattern, boolean includeNonstatic) {
+        super();
+        this.lambdaMethodPattern = Pattern.compile(pattern);
+        this.includeNonstatic = includeNonstatic;
+    }
 
     @Override
     public boolean matches(int access, String name, String desc, Set<String> annotations) {
-        return LAMBDA_METHOD_NAME_PATTERN.matcher(name).matches();
+        return (includeNonstatic || access == Opcodes.ACC_STATIC) && lambdaMethodPattern.matcher(name).matches();
     }
 
     @Override
